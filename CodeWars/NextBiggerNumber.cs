@@ -13,8 +13,21 @@ public partial class Kata
                 {
                     char temp = characters[i - 1];
                     characters[i - 1] = characters[i];
-                    characters[i] = characters[characters.Length - 1];
-                    characters[characters.Length - 1] = temp;
+                    if (characters[i - 1] > characters[characters.Length - 1])
+                    {
+                        characters[i] = characters[characters.Length - 1];
+                        characters[characters.Length - 1] = temp;
+                        if (characters[characters.Length-1] < temp)
+                        {
+                            temp = characters[i];
+                            characters[characters.Length - 1] = characters[i];
+
+                            characters[i] = temp;
+                        }
+                        return Convert.ToInt64(new string(characters));
+                    }
+                    else
+                        characters[i] = temp;
 
                     return Convert.ToInt64(new string(characters));
                 }
