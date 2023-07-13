@@ -30,6 +30,7 @@ public static partial class Kata
                 .Append(cc.AsSpan(cc.Length - 4, 4)); //.NET6: .Append(cc.Substring(cc.Length - 4, 4));
             cc = sb.ToString();
         }
+
         return cc;
     }
 }
