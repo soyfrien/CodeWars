@@ -20,15 +20,13 @@ public partial class Kata
             List<double> ratios = new();
 
             for (int i = 0; i < cogs.Length - 1; i++)
-            {
                 if (i % 2 is 0)
                     ratios.Add(Convert.ToDouble(-cogs[i]) / cogs[i + 1]);
                 else
                     ratios.Add(Convert.ToDouble(cogs[i]) / -cogs[i + 1]);
-            }
 
             for (int i = 0; i < ratios.Count; i++)
-                    finalRpm *= ratios[i];
+                finalRpm *= ratios[i];
 
             return finalRpm;
         }

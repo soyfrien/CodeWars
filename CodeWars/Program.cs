@@ -1,4 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿// www.codewars.com/r/5CvyhA
 using CodeWars;
 using static System.Console;
 
@@ -35,3 +35,13 @@ Console.WriteLine($"Final cog speed for 100, 75: {Kata.Cogs.CogRpm(new int[] { 1
 Console.WriteLine($"Final cog speed  for 100, 75, 50: {Kata.Cogs.CogRpm(new int[] { 100, 75, 50 })} RPM");
 Console.WriteLine($"Final cog speed for 100, 75, 50, 75: {Kata.Cogs.CogRpm(new int[] { 100, 75, 50, 75 })} RPM");
 Console.WriteLine($"Final cog speed for 100, 75, 50, 75, 100: {Kata.Cogs.CogRpm(new int[] { 100, 75, 50, 75, 100 })} RPM");
+
+
+/// 21937
+/// 21973
+/// 29173
+/// 39172
+/// 39712
+/// 79312
+/// 79321
+/// 97321
