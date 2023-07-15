@@ -9,16 +9,40 @@ public partial class Kata
     {
         long number = Convert.ToInt64(n.ToString());
         long nextNumber = number;
+        long maximumNumbers = Factorial(n.ToString().ToCharArray().Length);
         bool isNextNumber = false;
+        List<long> numbers = new();
         Dictionary<int, int> valueCounts = new(GetDigitValueCounts(number));
 
         if (valueCounts.Count > 0)
-            while (isNextNumber == false) 
+        {
+            numbers.Add(n);
+            while (!isNextNumber)
+            {
                 isNextNumber = SetIsNextNumber(++nextNumber, valueCounts);
+                if(isNextNumber)
+                {
+                    numbers.Add(nextNumber);
+                    if (maximumNumbers > 2 && numbers.Count == maximumNumbers)
+                        return -1;
+                }
+                if (maximumNumbers < Factorial(nextNumber.ToString().ToCharArray().Length))
+                    return -1;
+            }
+        }
         else
             return -1;
 
         return nextNumber;
+    }
+
+    private static long Factorial(int length)
+    {
+        int x = 1;
+        for (int i = length; i > 0; i--)
+            x *= i;
+
+        return x;
     }
 
     private static bool SetIsNextNumber(long nextNumber, Dictionary<int, int> valueCounts)
@@ -54,6 +78,9 @@ public partial class Kata
             else
                 valueCounts.Add(c, 1);
 
+
+        return valueCounts;
+    }
         /* switch (Convert.ToInt64(c))
             {
                 case '0':
@@ -117,9 +144,6 @@ public partial class Kata
                         valueCounts[c] += 1;
                     break;
             } */
-
-        return valueCounts;
-    }
 
     public static long NextBiggerNumberBroken(long n)
     {
