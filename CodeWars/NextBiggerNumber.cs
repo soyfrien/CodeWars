@@ -13,7 +13,7 @@ public partial class Kata
         Dictionary<int, int> valueCounts = new(GetDigitValueCounts(number));
 
         if (valueCounts.Count > 0)
-            while (isNextNumber is false) 
+            while (isNextNumber == false) 
                 isNextNumber = SetIsNextNumber(++nextNumber, valueCounts);
         else
             return -1;
@@ -27,15 +27,21 @@ public partial class Kata
 
         if (nextNumberValueCounts.Count == valueCounts.Count)
         {
+            int value = -1;
             foreach (KeyValuePair<int, int> kvp in valueCounts)
                 if (nextNumberValueCounts.ContainsKey(kvp.Key))
-                    if (!(kvp.Value == nextNumberValueCounts[kvp.Key]))
+                {
+                    nextNumberValueCounts.TryGetValue(kvp.Key, out value);
+                    if (!(kvp.Value == value))
                         return false;
-
-            return true;
+                }
+                else
+                    return false;
         }
+        else
+            return false;
 
-        return false;
+        return true;
     }
 
 
