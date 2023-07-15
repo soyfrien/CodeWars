@@ -11,7 +11,7 @@ public partial class Tests
         double expected = -4.0 / 3;
 
         // One gear
-        Assert.That(Cogs.CogRpm(new[] { 100 }), Is.EqualTo(100));
+        Assert.That(Cogs.CogRpm(new[] { 100 }), Is.EqualTo(1));
 
         // Two gears
         Assert.That(Cogs.CogRpm(new[] { 100, 75 }), 

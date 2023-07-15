@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Numerics;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CodeWars;
@@ -11,19 +12,23 @@ public partial class Kata
         long nextNumber = number;
         long maximumNumbers = Factorial(n.ToString().ToCharArray().Length);
         bool isNextNumber = false;
-        List<long> numbers = new();
+        //List<long> numbers = new();
+        long numberCount = 0;
         Dictionary<int, int> valueCounts = new(GetDigitValueCounts(number));
 
-        if (valueCounts.Count > 0)
+        if (valueCounts.Count > 1)
         {
-            numbers.Add(n);
+            //numbers.Add(n);
+            numberCount++;
             while (!isNextNumber)
             {
-                isNextNumber = SetIsNextNumber(++nextNumber, valueCounts);
-                if(isNextNumber)
+                isNextNumber = GetIsNextNumber(++nextNumber, valueCounts);
+                if (isNextNumber)
                 {
-                    numbers.Add(nextNumber);
-                    if (maximumNumbers > 2 && numbers.Count == maximumNumbers)
+                    //numbers.Add(nextNumber);
+                    numberCount++;
+                    //if (maximumNumbers > 2 && numbers.Count == maximumNumbers)
+                    if (maximumNumbers > 2 && numberCount == maximumNumbers)
                         return -1;
                 }
                 if (maximumNumbers < Factorial(nextNumber.ToString().ToCharArray().Length))
@@ -32,6 +37,9 @@ public partial class Kata
         }
         else
             return -1;
+
+        if (GetDigitValueCounts(nextNumber).Count == 1)
+            return nextNumber;
 
         return nextNumber;
     }
@@ -45,7 +53,7 @@ public partial class Kata
         return x;
     }
 
-    private static bool SetIsNextNumber(long nextNumber, Dictionary<int, int> valueCounts)
+    private static bool GetIsNextNumber(long nextNumber, Dictionary<int, int> valueCounts)
     {
         Dictionary<int, int> nextNumberValueCounts = new(GetDigitValueCounts(nextNumber));
 
@@ -77,11 +85,9 @@ public partial class Kata
                 valueCounts[c] += 1;
             else
                 valueCounts.Add(c, 1);
-
-
+        
         return valueCounts;
-    }
-        /* switch (Convert.ToInt64(c))
+    }/* switch (Convert.ToInt64(c))
             {
                 case '0':
                     if (!valueCounts.ContainsKey(c))
