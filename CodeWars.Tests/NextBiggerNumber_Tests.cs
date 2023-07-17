@@ -4,13 +4,13 @@ namespace CodeWars.Tests;
 
 [TestFixture]
 public partial class Tests
-{ 
+{
     [Test]
     public void NextBiggerNumber_Test()
     {
         Assert.That(Kata.NextBiggerNumber(1), Is.EqualTo(-1));
         Debug.WriteLine("1 -> -1");
-        Assert.That(Kata.NextBiggerNumber(12), Is.EqualTo(21));     
+        Assert.That(Kata.NextBiggerNumber(12), Is.EqualTo(21));
         Debug.WriteLine("12 -> 21");
         Assert.That(Kata.NextBiggerNumber(414), Is.EqualTo(441));
         Debug.WriteLine("414 -> 441");
@@ -36,5 +36,13 @@ public partial class Tests
         Debug.WriteLine("8888888888888888889 -> 8888888888888888898");
         Assert.That(Kata.NextBiggerNumber(8888888888888888888), Is.EqualTo(-1));
         Debug.WriteLine("8888888888888888888 -> -1");
+        Assert.That(Kata.NextBiggerNumber(1999999999999), Is.EqualTo((9199999999999)));
+        Debug.WriteLine("1999999999999 -> 9199999999999");
+        Assert.That(Kata.NextBiggerNumber(8888888888888888889), Is.EqualTo(8888888888888888898));
+        Debug.WriteLine("8888888888888888888 -> 8888888888888888898");
+        Assert.That(Kata.NextBiggerNumber(8888888888888888888), Is.EqualTo(-1));
+        Debug.WriteLine("8888888888888888888 -> -1");
+        Assert.That(Kata.NextBiggerNumber(1999999999999999999), Is.EqualTo((9199999999999999999)));
+        Debug.WriteLine("1999999999999999999 -> 9199999999999999999");
     }
 }

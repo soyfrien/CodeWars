@@ -2,7 +2,7 @@
 
 namespace CodeWars;
 
-public static partial class Kata
+public partial class Kata
 {
     /// <summary>
     /// Write a function that accepts an array of 10 integers (between 0 and 9),

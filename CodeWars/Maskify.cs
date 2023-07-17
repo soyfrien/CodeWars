@@ -2,7 +2,7 @@
 
 namespace CodeWars;
 
-public static partial class Kata
+public partial class Kata
 {
     /// <summary>
     /// Usually when you buy something, you're asked whether your credit card number, phone number
